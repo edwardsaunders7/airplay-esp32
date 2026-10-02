@@ -52,7 +52,13 @@ jobs:
             cp merged-firmware.bin ../airplay2-receiver-${{ matrix.name }}.bin
 
       - name: Upload firmware artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-${{ matrix.name }}
           path: airplay2-receiver-${{ matrix.name }}.bin
+
+      - name: Save pure OTA firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: pure-ota-${{ matrix.name }}
+          path: build/*.bin
